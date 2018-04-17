@@ -1,0 +1,33 @@
+<% include partials/header %>
+
+<div class="container">
+
+  <header class="jumbotron">
+     <div class="container">
+          <h1>Welcome to the smartcinema page</h1>
+                <p> view and select movies to watch , to rate, to book cinima tickets</p>
+                <p>or schedule to watch at your free time.</p>
+                <a  href= "/images/addmovie" class="btn btn-primary btn-large">Add new Movies</a>
+     </div>
+  </header>
+    <div class="row text-center"  style="display:flex; flex-wrap:wrap;">
+          <% movies.forEach(function(items){ %>
+              <div class="col-md-3 col-sm-6 ">
+                <div class="thumbnail">
+                  
+                  <img  src="<%= items.image %>">
+                  <div class="caption">
+                      <h4> <%= items.name %></h4>
+                  </div>
+                  <p>
+                    <a href="/images/<%=items.id%>" class="btn btn-primary">More Info</a>
+                  </p>
+                </div>
+                
+              </div>
+          <% }); %>
+     </div>
+ </div>
+        
+<a href="#">all movies</a>
+<% include partials/footer %>

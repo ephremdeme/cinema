@@ -1,0 +1,58 @@
+<% include partials/header %>
+<div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="lead"></p>
+                        
+                    </div>
+                    <div class="col-md-9">
+                       <div class="thumbnail">
+                        <img  src="<%= movies.image %>">
+                            <div class="caption-full">
+                                <h4 ><a> <%= movies.name%></a></h4>
+                                <div class="text-right">
+                                    <a > <%= movies.timestamp %></a>
+                                </div>
+                                <p ><%- movies.description %></p>
+                            </div>
+                            <form action="/<%=movies.id %>?_method=DELETE"  method="POST">
+                                <button class="btn btn-danger btn-lg" >Delete</button>
+                            </form>
+                        </div> 
+                    
+                    <div class="well">
+                        <div class="text-right">
+                            <a class="btn btn-success" href="/images/<%=movies.id %>/comment" >ADD Comment</a>
+                        </div>
+                        <div style="width: 50%; margin: 25px 25px 45px 386px;">
+                            <form action="/images/<%= movies.id %>/comment?_method=POST" method="POST">
+                                <div class="form-group">
+                                    <textarea class="form-control " rows="6" name="comment" placeholder="comment" ></textarea>
+                            </div>
+                                <div class="form-group">
+                                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                                </div>
+                            </form>
+                            <a href="/">Go Back</a>
+                        </div>
+                        <hr>
+                        <% comment.forEach(function(comment){ %>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+                                    <span class="pull-right"><%= comment.timestamp %></span>
+                                    <p >
+                                        <%= comment.comment %> 
+                                    </p>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>   
+</div>
+
+
+<% include partials/footer %>
